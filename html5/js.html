@@ -1,0 +1,157 @@
+<script type="text/javascript">
+/*
+	var name="The Window";
+	var object = {
+		name:"My Object",
+		getNameFunc:function(){
+			var that = this;
+			return function(){
+
+				return that.name;
+			};
+		}
+	};
+	alert(object.getNameFunc()());
+*/
+/*
+( function() {
+    var name = "";    //私有变量
+   Person = function(value) {
+        name = value;
+    }; 
+   Person.prototype.getName = function() {
+        return name;
+    };
+    Person.prototype.setName = function(value) {
+        name = value;
+    };
+
+     
+} ) ();
+
+var person = new Person("Nicholas");
+alert( person.getName() );    // "Nicholas"
+person.setName("Greg");
+alert( person.getName() );    // "Greg
+
+*/
+
+/*
+var Box = function(){
+	this.yyy="sdfsdfsadf";
+	this.xxx= function(){
+		return "run...";
+	};
+	
+}
+var box = new Box();
+alert(box.xxx());*/
+/*
+var Box = function(){
+	var yyy="sdfsdfsadf";					//私有
+	var xxx= function(){
+		return "run...";
+	};
+	
+	this.pubGo = function(){				//公有 特权方法
+		return xxx();
+	}
+}
+
+
+var box = new Box();
+alert(box.pubGo());*/
+/*
+var Box = function(v)
+{
+	var user = v;
+	this.getUser = function(){
+		return user;
+	}
+}
+
+ alert(new Box("Lee").getUser());
+
+ */
+
+/*
+ var Box = function(v)
+{
+	var user = v;
+	this.getUser = function(){
+		return user;
+	}
+	this.setUser = function(){
+		user = v;
+	}
+}
+
+ alert(new Box("Lee").getUser());
+*/
+/*
+(function(){
+
+	var user = ""; 					//				私有变量
+	Box = function(v){				//				全局构造函数
+		user = v;
+	}
+
+	Box.prototype.getUser = function(){
+		return user;
+	}
+
+	Box.prototype.setUser = function(v) {
+		user = v;
+	};
+
+})()
+
+var box = new Box("Lee");
+alert(box.getUser());
+
+var box2 = new Box("kkk");
+alert(box2.getUser());
+box2.setUser("bbbb");
+alert(box2.getUser());
+*/
+
+//自变量申明方式 单例 已经实例化
+/*
+var box = function() {
+	var user = "Lee";				//私有变量
+	var run = function(){			//私有方法
+		return user;
+	}
+	
+	return{
+		PubliGo : function()
+		{
+			return user + run();
+		}
+	}
+}
+
+alert(new box().PubliGo());
+
+*/
+
+function Desk(){};
+
+var box = function() {
+	var user = "Lee";				//私有变量
+	var run = function(){			//私有方法
+		return user;
+	}
+	
+
+	var desk = new Desk();
+	desk.publicGo = function(){	
+		return user + run();
+	} ;
+
+	return desk;
+}();
+
+alert(box.publicGo());
+
+</script>
