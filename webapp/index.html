@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<style>
+		#dvyao{width: 10em; height: 10em; margin: 5em auto; display: block;}
+		.hide{display: none;}
+	</style>	
+</head>
+<body>
+	<h1>手机APP</h1>	
+	<img src="1.gif"  id="dvyao">
+	<audio  id="musicBox" preload="metadata" src="1.mp3"  loop></audio>
+	<script src="http://sg.6998cdn.com/skin2013v2/js/jquery.1.7.1.min.js"  type="text/javascript"></script>
+	<script src="shake.js" type="text/javascript" charset="utf-8" ></script>
+	<script type="text/javascript">
+	$(function(){
+		var imgyao =  $("#dvyao");
+		var musicebox = $("#musicBox");
+
+		imgyao.hide();
+		 var fn_box = function(){};
+		 var fn_xxx = function() {
+			var t;
+			var run_begin = function(){
+				 imgyao.show();
+				 musicebox.get(0).play();
+
+			};	
+			var run_end = function(){
+				clearTimeout(t);
+				 imgyao.hide(0, function() {
+				 	musicebox.get(0).volume = 0;
+					//alert("结束动作 加载其它数据");
+				 });
+			};	
+			var desk = new fn_box();
+			desk.start_shake = function(){	
+				run_begin();
+				t = setTimeout(function(){run_end();}, 5000)				
+			} ;
+			return desk;
+		}();
+
+		window.addEventListener('shake', function(){		
+			fn_xxx.start_shake();
+		}, false);
+		
+	})
+	 
+		
+	</script>
+</body>
+</html>
